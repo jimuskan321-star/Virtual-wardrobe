@@ -1,0 +1,5 @@
+{
+  "name": "Virtual Wardrobe",
+  "description": "An application that uses AI to let you virtually try on clothes. Upload a photo of yourself and an item of clothing to see how it looks.",
+  "requestFramePermissions": []
+}
