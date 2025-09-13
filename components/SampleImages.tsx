@@ -25,7 +25,7 @@ export const SampleImages: React.FC<SampleImagesProps> = ({ onImageSelect }) => 
   };
 
   return (
-    <div className="bg-surface p-6 rounded-2xl border border-slate-700">
+    <div className="bg-surface p-6 rounded-2xl border border-slate-200">
       <h3 className="text-xl font-bold text-text-primary mb-4 text-center">Or Use Samples</h3>
       <div className="space-y-4">
         <div>

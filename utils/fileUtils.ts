@@ -24,7 +24,7 @@ export async function fileToGenerativePart(file: File): Promise<ImagePart> {
   };
 }
 
-// FIX: Add and export the `urlToFile` function to fetch an image from a URL and convert it into a File object.
+// FIX: Added the missing 'urlToFile' function to convert image URLs into File objects.
 export async function urlToFile(url: string, filename: string, mimeType: string): Promise<File> {
   const response = await fetch(url);
   const blob = await response.blob();

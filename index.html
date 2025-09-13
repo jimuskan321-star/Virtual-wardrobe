@@ -4,25 +4,32 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Virtual Wardrobe</title>
+    <title>Virtual Try On</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
+              sans: ['Figtree', 'sans-serif'],
             },
             colors: {
-              background: '#111827', // slate-900
-              surface: '#1f2937',    // slate-800
-              primary: '#f9fafb',      // slate-50
-              'primary-hover': '#d1d5db', // slate-300
-              'text-primary': '#f9fafb',   // slate-50
-              'text-secondary': '#9ca3af', // slate-400
+              background: '#ffffff',      // white
+              surface: '#f8fafc',        // slate-50
+              primary: '#4f46e5',         // indigo-600
+              'primary-hover': '#4338ca', // indigo-700
+              'text-primary': '#1e293b',   // slate-800
+              'text-secondary': '#64748b', // slate-500
+              'on-primary': '#ffffff',     // white
+              lime: {
+                '300': '#bef264'
+              },
+              purple: {
+                '400': '#a78bfa'
+              }
             }
           }
         }

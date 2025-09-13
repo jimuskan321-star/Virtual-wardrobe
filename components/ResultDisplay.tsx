@@ -26,12 +26,12 @@ const ErrorDisplay: React.FC<{ message: string }> = ({ message }) => (
 );
 
 const Placeholder: React.FC = () => (
-    <div className="flex flex-col items-center justify-center h-full text-center bg-background border-2 border-dashed border-slate-700 rounded-lg p-4">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <div className="flex flex-col items-center justify-center h-full text-center bg-surface border-2 border-dashed border-slate-200 rounded-lg p-4">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14" />
         </svg>
         <p className="mt-4 text-lg font-semibold text-text-secondary">Your generated image will appear here.</p>
-        <p className="text-sm text-slate-500 mt-1">Upload images and click "Virtual Try-On".</p>
+        <p className="text-sm text-slate-400 mt-1">Upload images and click "Virtual Try-On".</p>
     </div>
 );
 
@@ -88,19 +88,19 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({ resultImage, isLoa
       return (
         <div className="w-full h-full flex flex-col items-center justify-center gap-4">
           <div className="flex-grow w-full flex items-center justify-center overflow-hidden">
-            <img src={resultImage} alt="Virtual try-on result" className="max-h-full max-w-full object-contain rounded-lg border border-slate-700" />
+            <img src={resultImage} alt="Virtual try-on result" className="max-h-full max-w-full object-contain rounded-lg border border-slate-200" />
           </div>
           <div className="flex-shrink-0 flex items-center gap-4">
             <button
               onClick={handleDownload}
-              className="px-8 py-3 bg-primary text-background font-bold rounded-lg hover:bg-primary-hover transition-all duration-300 transform hover:scale-105"
+              className="px-8 py-3 bg-primary text-on-primary font-bold rounded-lg hover:bg-primary-hover transition-all duration-300 transform hover:scale-105"
             >
               Download JPEG
             </button>
             {canShare && (
               <button
                 onClick={handleShare}
-                className="px-8 py-3 bg-slate-600 text-text-primary font-bold rounded-lg hover:bg-slate-500 transition-all duration-300 transform hover:scale-105"
+                className="px-8 py-3 bg-slate-200 text-slate-700 font-bold rounded-lg hover:bg-slate-300 transition-all duration-300 transform hover:scale-105"
               >
                 Share
               </button>
