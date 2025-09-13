@@ -1,12 +1,13 @@
 import { GoogleGenAI, Modality } from "@google/genai";
 import type { ImagePart } from "../types";
 
-// The API key is provided by the user to fix the application.
-const ai = new GoogleGenAI({ apiKey: "AIzaSyAYK1SCAPxcobsluibkBz-atB2l6ktmv6U" });
+// Initialize the Google GenAI client with the API key from environment variables.
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Use the 'gemini-2.5-flash-image-preview' model, also known as Nano Banana, for image editing.
 const model = 'gemini-2.5-flash-image-preview';
 
 export async function virtualTryOn(personImage: ImagePart, clothingImage: ImagePart): Promise<string | null> {
-    const prompt = 'Take the clothing item from the second image and realistically place it on the person from the first image. Preserve the person\'s pose and the original background. Ensure the clothing fits naturally. The output should be only the final photorealistic image.';
+    const prompt = 'Take the clothing item from the second image and realistically place it on the person from the first image. Prioritize high resolution and photorealism. Preserve the person\'s pose and the original background. Ensure the clothing fits naturally. The output should be only the final photorealistic image.';
 
     try {
         const response = await ai.models.generateContent({

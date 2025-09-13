@@ -6,6 +6,10 @@ import { virtualTryOn } from './services/geminiService';
 import type { ImageData } from './types';
 import { fileToGenerativePart } from './utils/fileUtils';
 
+const MAX_FILE_SIZE_MB = 5;
+const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
+const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
+
 const App: React.FC = () => {
   const [personImage, setPersonImage] = useState<ImageData | null>(null);
   const [clothingImage, setClothingImage] = useState<ImageData | null>(null);
@@ -14,6 +18,18 @@ const App: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   const handleImageUpload = async (file: File, type: 'person' | 'clothing') => {
+    setError(null); // Clear previous errors on new upload attempt
+
+    if (!ALLOWED_MIME_TYPES.includes(file.type)) {
+      setError(`Unsupported file type. Please upload a JPEG, PNG, or WebP image.`);
+      return;
+    }
+
+    if (file.size > MAX_FILE_SIZE_BYTES) {
+      setError(`File is too large. Please upload an image smaller than ${MAX_FILE_SIZE_MB}MB.`);
+      return;
+    }
+
     try {
       const generativePart = await fileToGenerativePart(file);
       const imageData = {
@@ -27,7 +43,7 @@ const App: React.FC = () => {
         setClothingImage(imageData);
       }
     } catch (err) {
-      setError('Failed to process image. Please try another file.');
+      setError('Failed to process image locally. The file might be corrupted. Please try another file.');
       console.error(err);
     }
   };
@@ -54,7 +70,7 @@ const App: React.FC = () => {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        setError('An unknown error occurred. Please try again.');
+        setError('An unknown error occurred during AI generation. Please try again.');
       }
     } finally {
       setIsLoading(false);
@@ -117,7 +133,7 @@ const App: React.FC = () => {
         </div>
       </main>
       <footer className="text-center p-4 text-text-secondary text-sm">
-        <p>Powered by Gemini. Built by Harsh.</p>
+        <p>Powered by Gemini's Nano Banana model. Built by Harsh.</p>
       </footer>
     </div>
   );
