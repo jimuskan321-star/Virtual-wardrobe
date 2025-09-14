@@ -42,6 +42,9 @@ export async function virtualTryOn(personImage: ImagePart, clothingImage: ImageP
             if (error.message.includes('API key not valid')) {
                 throw new Error('Invalid API Key: Please ensure your key is correct and has permissions.');
             }
+            if (error.message.includes('quota') || error.message.includes('RESOURCE_EXHAUSTED')) {
+                throw new Error('API Quota Exceeded: You have exceeded your current quota. Please check your Google Cloud project billing and quota settings at https://console.cloud.google.com/');
+            }
             if (error.message.includes('429')) { // Rate limiting
                 throw new Error('Rate Limit Exceeded: You have made too many requests. Please wait and try again.');
             }
