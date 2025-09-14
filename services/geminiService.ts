@@ -2,7 +2,7 @@ import { GoogleGenAI, Modality } from "@google/genai";
 import type { ImagePart } from "../types";
 
 // Initialize the Google GenAI client with the API key from environment variables.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
 // Use the 'gemini-2.5-flash-image-preview' model, also known as Nano Banana, for image editing.
 const model = 'gemini-2.5-flash-image-preview';
 
